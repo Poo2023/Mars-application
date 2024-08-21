@@ -1,0 +1,25 @@
+body{background-color:#deeeea;
+    border-image: 2px;
+text-align: center;}
+    hr{
+        border-style: none;
+        border-top: dotted;
+        border-color:black;
+        border-width: 5px;
+        width:30%
+       }
+    img{height:200px}
+    h1,h2{color: #117373; text-align: center;}
+    h3{color: #66BFBF;}
+    .dob{
+        padding-top: 10px;
+        padding-bottom: 20px;
+        
+
+    }
+    form{
+        padding-top: 100px;
+    }
+    input{
+        padding-bottom: 10px;
+    }

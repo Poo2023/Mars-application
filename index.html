@@ -1,0 +1,97 @@
+<html>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        label {
+            display: inline-block;
+            width: 150px;
+            text-align: right;
+        }
+    </style>
+    <script>
+        function validate(event) {
+            event.preventDefault(); 
+
+            document.getElementById('modify').innerHTML = document.lastModified; 
+            var fname = document.getElementById("fullname");
+            var dob = document.getElementById("dob");
+            var phnum = document.getElementById("phnumber");
+            var email = document.getElementById("email");
+            var nationality = document.getElementById("nationality");
+
+            if (fname.value == "") {
+                window.alert("Enter your Full name");
+                fname.focus();
+                return false;
+            }
+            if (dob.value == "") {
+                window.alert("Enter your Date of Birth");
+                dob.focus();
+                return false;
+            }
+            if (phnum.value == "") {
+                window.alert("Enter Phone number");
+                phnum.focus();
+                return false;
+            }
+            if (email.value == "") {
+                window.alert("Enter email address");
+                email.focus();
+                return false;
+            }
+            if (nationality.value == "") {
+                window.alert("Enter your nationality");
+                nationality.focus();
+                return false;
+            }
+
+            var email_re = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+            if (!email_re.test(email.value)) {
+                window.alert("Improper email address");
+                email.style.border = "red solid 3px";
+                return false;
+            }
+
+            var phnum_re =  /^(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}/;
+            if (!phnum_re.test(phnum.value)) {
+                window.alert("Improper Phone number ");
+                phnum.style.border = "red solid 3px";
+                return false;
+            }
+
+            document.getElementById("marsForm").submit();
+            window.location.href = "stage2.html"; 
+        }
+    </script>
+</head>
+<body>
+    <h1>Stage 1 - Personal Information:</h1>
+    <br>
+    <h2>Fill out the Application form to come with us on a once-in-a-lifetime trip to Mars</h2>
+    <p id="modify"></p> 
+    <hr>
+    <div class="login">
+        <form id="marsForm" action="/sign" method="post" onsubmit="validate(event)">
+            <center>
+                <label class="dob" for="fullname">Full name:</label>
+                <input class="input" type="text" name="fullname" id="fullname" placeholder="Enter your Full name" required> 
+                <br>
+                <label class="dob" for="dob">Date of Birth:</label>
+                <input class="input" type="date" name="dob" id="dob" placeholder="Enter your Date of birth" required> 
+                <br>
+                <label class="dob" for="phnumber">Mobile number:</label>
+                <input class="input" type="text" name="phnumber" id="phnumber" placeholder="Enter Phone number" required>
+                <br>
+                <label class="dob" for="email">Email:</label>
+                <input class="input" type="text" name="email" id="email" placeholder="Enter email" required>
+                <br>
+                <label class="dob" for="nationality">Nationality:</label>
+                <input class="input" type="text" name="nationality" id="nationality" placeholder="Enter your nationality" required>
+                <br>
+                <input class="input" style="background-color:#117373;" type="submit" value="Sign Up" name="signup">
+            </center>
+        </form>
+    </div>
+</body>
+</html>

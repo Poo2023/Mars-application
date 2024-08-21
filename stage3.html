@@ -1,0 +1,73 @@
+<html>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        label {
+            display: inline-block;
+            width: 150px;
+            text-align: right;
+        }
+    </style>
+    <script>
+        function validate(event) {
+            event.preventDefault(); 
+            var healthdec = document.getElementById("health");
+            var phnum = document.getElementById("phnumber");
+            var emer = document.getElementById("emer");
+
+            if (phnum.value == "") {
+                window.alert("Enter Phone number");
+                phnum.focus();
+                return false;
+            }
+            if (emer.value == "") {
+                window.alert("Enter Emergency contact name");
+                emer.focus();
+                return false;
+            }
+            var phnum_re = /^[7-9]\d{9}$/;
+            if (!phnum_re.test(phnum.value)) {
+                window.alert("Improper Phone number ");
+                phnum.style.border = "red solid 3px";
+                return false;
+            }
+
+
+    
+            document.getElementById("marsForm").submit();
+            window.location.href = "welcome.html"; 
+        }
+    </script>
+</head>
+<body>
+    <h1>Stage 3 - Health and Safety:</h1>
+    <hr>
+    <div class="login">
+        <form id="marsForm" action="/sign" method="post" onsubmit="validate(event)">
+            <center>
+                <label for="health">Health Declaration:</label>
+                <select class="input" name="health" id="health" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <br><br>
+
+                <label for="emer">Emergency contact name:</label>
+                <input class="input" type="text" name="emer" id="emer" placeholder="Enter your Emergency contact name" required> 
+                <br><br>
+
+                <label for="phnumber">Mobile number:</label>
+                <input class="input" type="text" name="phnumber" id="phnumber" placeholder="Enter Phone number" required>
+                <br><br>
+
+                <label for="med">Any medical condition?</label>
+                <input class="input" type="text" name="med" id="med" placeholder="Enter any medical condition">
+                <br><br>
+
+                <input class="input" style="background-color:#117373;" type="submit" value="Sign Up" name="signup">
+            </center>
+        </form>
+    </div>
+</body>
+</html>

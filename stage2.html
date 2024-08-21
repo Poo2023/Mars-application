@@ -1,0 +1,69 @@
+<html>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        label {
+            display: inline-block;
+            width: 150px;
+            text-align: right;
+        }
+    </style>
+    <script>
+        function validate(event) {
+            event.preventDefault(); 
+
+            document.getElementById('modify').innerHTML = document.lastModified; 
+            
+            var depDate = document.getElementById("departureDate");
+            var retDate = document.getElementById("returnDate");
+            var nationality = document.getElementById("nationality");
+            if (depDate.value == "") {
+                window.alert("Enter your Departure Date");
+                depDate.focus();
+                return false;
+            }
+
+            if (retDate.value == "") {
+                window.alert("Enter your Return Date");
+                retDate.focus();
+                return false;
+            }
+            
+            document.getElementById("marsForm").submit();
+            window.location.href = "stage3.html";
+        }
+    </script>
+</head>
+<body>
+    <h1>Stage 2 - Travel Preferences:</h1>
+    <p id="modify"></p> 
+    <hr>
+    <div class="login">
+        <form id="marsForm" action="/sign" method="post" onsubmit="validate(event)">
+            <center>
+                <label for="departureDate">Departure date:</label>
+                <input class="input" type="date" name="departureDate" id="departureDate" placeholder="Enter your departure date" required>
+                <br><br>
+
+                <label for="returnDate">Return date:</label>
+                <input class="input" type="date" name="returnDate" id="returnDate" placeholder="Enter your return date" required>
+                <br><br>
+
+                <label for="accommodation">Accommodation Preference:</label>
+                <select class="input" name="accommodation" id="accommodation" required>
+                    <option value="Space Hotel">Space Hotel</option>
+                    <option value="Martian Base">Martian Base</option>
+                </select>
+                <br><br>
+
+                <label for="spec">Special requests:</label>
+                <input class="input" type="text" name="spec" id="spec" placeholder="Enter any special requests">
+                <br><br>
+
+                <input class="input" style="background-color:#117373;" type="submit" value="Sign Up" name="signup">
+            </center>
+        </form>
+    </div>
+</body>
+</html>
